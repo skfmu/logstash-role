@@ -7,7 +7,7 @@
   apt_key: url="{{ logstash_repo_key }}" 
            state=present
 
-- name: Install Logstash and Logstash-Contrib
+- name: Install Logstash apt packages
   apt: pkg={{ item.package }} 
        update_cache=yes 
        state=latest

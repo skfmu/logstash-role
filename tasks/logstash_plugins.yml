@@ -1,0 +1,9 @@
+---
+# Derived from SPSCommerce/ansible-role-logstash
+- name: Installing plugins
+  shell: sudo -u logstash -H /opt/logstash/bin/plugin install {{ item.name }} chdir=/opt/logstash
+  with_items: logstash_plugins
+  when: logstash_plugins is defined
+- name: Updating plugins
+  shell: sudo -u logstash -H /opt/logstash/bin/plugin update chdir=/opt/logstash
+  when: logstash_plugins_update
